@@ -82,7 +82,7 @@ const Home = () => {
   const restaurantData = [
     {
       id: 1,
-      name: 'ByProgrammers Burger',
+      name: 'Friday Special Burger',
       rating: 4.8,
       categories: [5, 7],
       priceRating: affordable,
@@ -125,7 +125,7 @@ const Home = () => {
     },
     {
       id: 2,
-      name: 'ByProgrammers Pizza',
+      name: 'Pizza Hut Pizza',
       rating: 4.8,
       categories: [2, 4, 6],
       priceRating: expensive,
@@ -177,7 +177,7 @@ const Home = () => {
     },
     {
       id: 3,
-      name: 'ByProgrammers Hotdogs',
+      name: 'Japa Hotdogs',
       rating: 4.8,
       categories: [3],
       priceRating: expensive,
@@ -204,7 +204,7 @@ const Home = () => {
     },
     {
       id: 4,
-      name: 'ByProgrammers Sushi',
+      name: 'Sushi California',
       rating: 4.8,
       categories: [8],
       priceRating: expensive,
@@ -231,7 +231,7 @@ const Home = () => {
     },
     {
       id: 5,
-      name: 'ByProgrammers Cuisine',
+      name: 'Happy Hour Cuisine',
       rating: 4.8,
       categories: [1, 2],
       priceRating: affordable,
@@ -282,7 +282,7 @@ const Home = () => {
     },
     {
       id: 6,
-      name: 'ByProgrammers Dessets',
+      name: 'O Desserts',
       rating: 4.9,
       categories: [9, 10],
       priceRating: affordable,
@@ -453,7 +453,10 @@ const Home = () => {
   function renderRestaurantList() {
     const renderItem = ({item}) => (
       <TouchableOpacity style={{marginBottom: SIZES.padding * 2}}>
-        <View>
+        <View
+          style={{
+            marginBottom: SIZES.padding,
+          }}>
           <Image
             source={item.photo}
             resizeMode="cover"
@@ -478,6 +481,25 @@ const Home = () => {
             }}>
             <Text style={{...FONTS.h4}}>{item.duration}</Text>
           </View>
+        </View>
+        <Text style={{...FONTS.body2}}>{item.name}</Text>
+
+        {/* Rating */}
+        <View
+          style={{
+            marginTop: SIZES.padding,
+            flexDirection: 'row',
+          }}>
+          <Image
+            source={icons.star}
+            style={{
+              height: 20,
+              width: 20,
+              tintColor: COLORS.primary,
+              marginRight: 10,
+            }}
+          />
+          <Text style={{...FONTS.h3}}>{item.rating}</Text>
         </View>
       </TouchableOpacity>
     );
