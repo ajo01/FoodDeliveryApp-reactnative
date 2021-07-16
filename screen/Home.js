@@ -340,6 +340,12 @@ const Home = () => {
     setSelectedCategory(category);
   }
 
+  function getCategoryNamebyId(id) {
+    let category = categories.filter(a => a.id == id);
+    if (category.length > 0) return category[0].name;
+    return '';
+  }
+
   function renderHeader() {
     return (
       <View style={{flexDirection: 'row', height: 50}}>
@@ -500,6 +506,24 @@ const Home = () => {
             }}
           />
           <Text style={{...FONTS.h3}}>{item.rating}</Text>
+          {/* Categories */}
+          <View
+            style={{
+              flexDirection: 'row',
+              marginLeft: 10,
+            }}>
+            {item.categories.map(categoriId => {
+              return (
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    key: {categoriId},
+                  }}>
+                  <Text>{getCategoryNamebyId(categoriId)}</Text>
+                </View>
+              );
+            })}
+          </View>
         </View>
       </TouchableOpacity>
     );
