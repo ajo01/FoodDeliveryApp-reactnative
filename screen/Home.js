@@ -389,7 +389,26 @@ const Home = () => {
             justifyContent: 'center',
             marginRight: SIZES.padding,
             ...styles.shadow,
-          }}></TouchableOpacity>
+          }}>
+          <View
+            style={{
+              width: 50,
+              height: 50,
+              borderRadius: 25,
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: COLORS.white,
+            }}>
+            <Image
+              source={item.icon}
+              resizeMode="contain"
+              style={{
+                width: 30,
+                height: 30,
+              }}
+            />
+          </View>
+        </TouchableOpacity>
       );
     };
 
