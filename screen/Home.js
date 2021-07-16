@@ -519,10 +519,27 @@ const Home = () => {
                     flexDirection: 'row',
                     key: {categoriId},
                   }}>
-                  <Text>{getCategoryNamebyId(categoriId)}</Text>
+                  <Text style={{...FONTS.h3}}>
+                    {getCategoryNamebyId(categoriId)}
+                  </Text>
+                  <Text style={{...FONTS.h3, color: COLORS.darkgray}}>.</Text>
                 </View>
               );
             })}
+            {/* Price */}
+            {[1, 2, 3].map(priceRating => (
+              <Text
+                key={priceRating}
+                style={{
+                  ...FONTS.body3,
+                  color:
+                    priceRating <= item.priceRating
+                      ? COLORS.black
+                      : COLORS.darkgray,
+                }}>
+                $
+              </Text>
+            ))}
           </View>
         </View>
       </TouchableOpacity>
