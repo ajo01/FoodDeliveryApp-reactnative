@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import {COLORS, icons, images, SIZES, FONTS} from '../constants';
 
-const Home = () => {
+const Home = ({navigation}) => {
   // Dummy Datas
 
   const initialCurrentLocation = {
@@ -458,7 +458,14 @@ const Home = () => {
 
   function renderRestaurantList() {
     const renderItem = ({item}) => (
-      <TouchableOpacity style={{marginBottom: SIZES.padding * 2}}>
+      <TouchableOpacity
+        style={{marginBottom: SIZES.padding * 2}}
+        onPress={() =>
+          navigation.navigate('Restaurant', {
+            item,
+            currentLocation,
+          })
+        }>
         <View
           style={{
             marginBottom: SIZES.padding,
@@ -522,7 +529,7 @@ const Home = () => {
                   <Text style={{...FONTS.h3}}>
                     {getCategoryNamebyId(categoriId)}
                   </Text>
-                  <Text style={{...FONTS.h3, color: COLORS.darkgray}}>.</Text>
+                  <Text style={{...FONTS.h3, color: COLORS.darkgray}}> • </Text>
                 </View>
               );
             })}
