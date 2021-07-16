@@ -19,7 +19,38 @@ const Home = () => {
             width: 50,
             paddingLeft: SIZES.padding * 2,
             justifyContent: 'center',
-          }}></TouchableOpacity>
+          }}>
+          <Image
+            source={icons.nearby}
+            resize="contain"
+            style={{width: 30, height: 30}}
+          />
+        </TouchableOpacity>
+        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+          <View
+            style={{
+              width: '70%',
+              height: '100%',
+              backgroundColor: COLORS.lightGray3,
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: SIZES.radius,
+            }}>
+            <Text style={{...FONTS.h3}}>Location</Text>
+          </View>
+        </View>
+        <TouchableOpacity
+          style={{
+            width: 50,
+            paddingRight: SIZES.padding * 2,
+            justifyContent: 'center',
+          }}>
+          <Image
+            source={icons.basket}
+            resizeMode="contain"
+            style={{width: 30, height: 30}}
+          />
+        </TouchableOpacity>
       </View>
     );
   }
