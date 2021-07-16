@@ -376,7 +376,45 @@ const Home = () => {
     );
   }
 
-  return <SafeAreaView style={styles.container}>{renderHeader()}</SafeAreaView>;
+  function renderMainCategories() {
+    const renderItem = ({item}) => {
+      return (
+        <TouchableOpacity
+          style={{
+            padding: SIZES.padding,
+            paddingBottom: SIZES.padding * 2,
+            backgroundColor: COLORS.primary,
+            borderRadius: SIZES.radius,
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginRight: SIZES.padding,
+            ...styles.shadow,
+          }}></TouchableOpacity>
+      );
+    };
+
+    return (
+      <View style={{padding: SIZES.padding * 2}}>
+        <Text style={{...FONTS.h1}}>Main</Text>
+        <Text style={{...FONTS.h1}}>Categories</Text>
+        <FlatList
+          data={categories}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={item => `${item.id}`}
+          renderItem={renderItem}
+          contentContainerStyle={{paddingVertical: SIZES.padding * 2}}
+        />
+      </View>
+    );
+  }
+
+  return (
+    <SafeAreaView style={styles.container}>
+      {renderHeader()}
+      {renderMainCategories()}
+    </SafeAreaView>
+  );
 };
 
 const styles = StyleSheet.create({
