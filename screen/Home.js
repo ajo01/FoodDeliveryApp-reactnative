@@ -332,6 +332,14 @@ const Home = () => {
     initialCurrentLocation,
   );
 
+  function onSelectCategory(category) {
+    let restaurantList = restaurantData.filter(a =>
+      a.categories.includes(category.id),
+    );
+    setRestaurants(restaurantList);
+    setSelectedCategory(category);
+  }
+
   function renderHeader() {
     return (
       <View style={{flexDirection: 'row', height: 50}}>
@@ -389,7 +397,8 @@ const Home = () => {
             justifyContent: 'center',
             marginRight: SIZES.padding,
             ...styles.shadow,
-          }}>
+          }}
+          onPress={() => onSelectCategory(item)}>
           <View
             style={{
               width: 50,
@@ -408,6 +417,14 @@ const Home = () => {
               }}
             />
           </View>
+          <Text
+            style={{
+              marginTop: SIZES.padding,
+              color: COLORS.white,
+              ...FONTS.body5,
+            }}>
+            {item.name}
+          </Text>
         </TouchableOpacity>
       );
     };
