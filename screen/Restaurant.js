@@ -56,6 +56,16 @@ const Restaurant = ({route, navigation}) => {
     }
   }
 
+  function getOrderQty(menuId) {
+    let orderItem = orderItems.filter(a => a.menuId == menuId);
+
+    if (orderItem.length > 0) {
+      return orderItem[0].qty;
+    }
+
+    return 0;
+  }
+
   function renderHeader() {
     return (
       <View style={{flexDirection: 'row'}}>
@@ -158,7 +168,7 @@ const Restaurant = ({route, navigation}) => {
                     alignItems: 'center',
                     justifyContent: 'center',
                   }}>
-                  <Text style={{...FONTS.h2}}>5</Text>
+                  <Text style={{...FONTS.h2}}>{getOrderQty(item.menuId)}</Text>
                 </View>
 
                 {/* Right Quantity */}
