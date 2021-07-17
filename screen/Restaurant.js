@@ -264,6 +264,19 @@ const Restaurant = ({route, navigation}) => {
                 Location
               </Text>
             </View>
+
+            <View style={{flexDirection: 'row'}}>
+              <Image
+                source={icons.master_card}
+                resizeMode="contain"
+                style={{
+                  width: 20,
+                  height: 20,
+                  tintColor: COLORS.darkgray,
+                }}
+              />
+              <Text style={{marginLeft: SIZES.padding, ...FONTS.h4}}>8888</Text>
+            </View>
           </View>
         </View>
       </View>
