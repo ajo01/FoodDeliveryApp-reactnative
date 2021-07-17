@@ -151,6 +151,17 @@ const Restaurant = ({route, navigation}) => {
               </Text>
               <Text style={{...FONTS.h3}}>{item.description}</Text>
             </View>
+
+            {/* Calories */}
+            <View style={{flexDirection: 'row', marginTop: 10}}>
+              <Image
+                source={icons.fire}
+                style={{width: 20, height: 20, marginRight: 10}}
+              />
+              <Text style={{...FONTS.body3, color: COLORS.darkgray}}>
+                {item.calories.toFixed(2)} cal
+              </Text>
+            </View>
           </View>
         ))}
       </Animated.ScrollView>
