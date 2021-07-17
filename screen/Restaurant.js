@@ -278,6 +278,25 @@ const Restaurant = ({route, navigation}) => {
               <Text style={{marginLeft: SIZES.padding, ...FONTS.h4}}>8888</Text>
             </View>
           </View>
+
+          {/* Order Button */}
+          <View
+            style={{
+              padding: SIZES.padding * 2,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <TouchableOpacity
+              style={{
+                width: SIZES.width * 0.9,
+                padding: SIZES.padding,
+                backgroundColor: COLORS.primary,
+                alignItems: 'center',
+                borderRadius: SIZES.radius,
+              }}>
+              <Text style={{color: COLORS.white, ...FONTS.h2}}>Order</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     );
