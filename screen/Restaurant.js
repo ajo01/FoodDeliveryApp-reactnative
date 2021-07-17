@@ -90,6 +90,37 @@ const Restaurant = ({route, navigation}) => {
                 resizeMode="cover"
                 style={{width: SIZES.width, height: '100%'}}
               />
+              {/* Quantity */}
+              <View
+                style={{
+                  position: 'absolute',
+                  bottom: -20,
+                  width: SIZES.width,
+                  height: 50,
+                  justifyContent: 'center',
+                  flexDirection: 'row',
+                }}>
+                <TouchableOpacity
+                  style={{
+                    width: 50,
+                    backgroundColor: COLORS.white,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    borderTopLeftRadius: 25,
+                    borderBottomLeftRadius: 25,
+                  }}>
+                  <Text style={{...FONTS.body1}}>-</Text>
+                </TouchableOpacity>
+                <View
+                  style={{
+                    width: 50,
+                    backgroundColor: COLORS.white,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}>
+                  <Text style={{...FONTS.h2}}>5</Text>
+                </View>
+              </View>
             </View>
           </View>
         ))}
