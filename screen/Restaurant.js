@@ -31,17 +31,21 @@ const Restaurant = ({route, navigation}) => {
             paddingLeft: SIZES.padding * 2,
             justifyContent: 'center',
           }}
-          onPress={() => navigation.goBack()}></TouchableOpacity>
+          onPress={() => navigation.goBack()}>
+          <Image
+            source={icons.back}
+            resizeMode="contain"
+            style={{
+              width: 30,
+              height: 30,
+            }}
+          />
+        </TouchableOpacity>
       </View>
     );
   }
 
-  return (
-    <SafeAreaView style={styles.container}>
-      {renderHeader()}
-      <Text>Restaurant</Text>
-    </SafeAreaView>
-  );
+  return <SafeAreaView style={styles.container}>{renderHeader()}</SafeAreaView>;
 };
 
 const styles = StyleSheet.create({
