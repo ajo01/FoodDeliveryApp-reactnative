@@ -43,6 +43,16 @@ const Restaurant = ({route, navigation}) => {
       }
 
       setOrderItems(orderList);
+    } else {
+      if (item.length > 0) {
+        if (item[0]?.qty > 0) {
+          let newQty = item[0].qty - 1;
+          item[0].qty = newQty;
+          item[0].total = newQty * price;
+        }
+      }
+
+      setOrderItems(orderList);
     }
   }
 
@@ -136,7 +146,8 @@ const Restaurant = ({route, navigation}) => {
                     justifyContent: 'center',
                     borderTopLeftRadius: 25,
                     borderBottomLeftRadius: 25,
-                  }}>
+                  }}
+                  onPress={() => editOrder('-', item.menuId, item.price)}>
                   <Text style={{...FONTS.body1}}>-</Text>
                 </TouchableOpacity>
                 {/* Center Quantity */}
@@ -159,7 +170,8 @@ const Restaurant = ({route, navigation}) => {
                     justifyContent: 'center',
                     borderTopRightRadius: 25,
                     borderBottomRightRadius: 25,
-                  }}>
+                  }}
+                  onPress={() => editOrder('+', item.menuId, item.price)}>
                   <Text style={{...FONTS.body1}}>+</Text>
                 </TouchableOpacity>
               </View>
