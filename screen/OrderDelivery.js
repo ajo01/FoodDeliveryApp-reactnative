@@ -1,12 +1,8 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, SafeAreaView} from 'react-native';
 
 const OrderDelivery = () => {
-  return (
-    <View>
-      <Text>OrderDelivery</Text>
-    </View>
-  );
+  return <SafeAreaView>{}</SafeAreaView>;
 };
 
 export default OrderDelivery;
