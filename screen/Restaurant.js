@@ -352,7 +352,13 @@ const Restaurant = ({route, navigation}) => {
                 backgroundColor: COLORS.primary,
                 alignItems: 'center',
                 borderRadius: SIZES.radius,
-              }}>
+              }}
+              onPress={() =>
+                navigation.navigate('OrderDelivery', {
+                  restaurant: restaurant,
+                  currentLocation: currentLocation,
+                })
+              }>
               <Text style={{color: COLORS.white, ...FONTS.h2}}>Order</Text>
             </TouchableOpacity>
           </View>
