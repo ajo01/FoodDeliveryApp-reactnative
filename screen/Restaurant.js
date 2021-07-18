@@ -66,6 +66,12 @@ const Restaurant = ({route, navigation}) => {
     return 0;
   }
 
+  function getBasketItemCount() {
+    let itemCount = orderItems.reduce((a, b) => a + (b.qty || 0), 0);
+
+    return itemCount;
+  }
+
   function renderHeader() {
     return (
       <View style={{flexDirection: 'row'}}>
@@ -284,7 +290,9 @@ const Restaurant = ({route, navigation}) => {
               borderBottomColor: COLORS.lightGray2,
               borderBottomWidth: 1,
             }}>
-            <Text style={{...FONTS.h3}}>Items in cart</Text>
+            <Text style={{...FONTS.h3}}>
+              {getBasketItemCount()} items in cart
+            </Text>
             <Text style={{...FONTS.h3}}>$33</Text>
           </View>
 
