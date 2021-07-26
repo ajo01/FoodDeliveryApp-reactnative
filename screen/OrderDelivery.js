@@ -13,6 +13,8 @@ const OrderDelivery = ({route, navigation}) => {
   React.useEffect(() => {
     let {restaurant, currentLocation} = route.params;
 
+    console.log(restaurant);
+
     let fromLoc = currentLocation.gps;
     let toLoc = restaurant.location;
     let street = currentLocation.streetName;
@@ -32,9 +34,47 @@ const OrderDelivery = ({route, navigation}) => {
   }, []);
 
   function renderMap() {
+    const destinationMarker = () => (
+      <Marker coordinate={toLocation}>
+        <View
+          style={{
+            height: 40,
+            width: 40,
+            borderRadius: 20,
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: COLORS.white,
+          }}>
+          <View
+            style={{
+              height: 30,
+              width: 30,
+              borderRadius: 15,
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: COLORS.primary,
+            }}>
+            <Image
+              source={icons.pin}
+              style={{
+                width: 25,
+                height: 25,
+                tintColor: COLORS.white,
+              }}
+            />
+          </View>
+        </View>
+      </Marker>
+    );
+
     return (
       <View style={{flex: 1}}>
-        <MapView style={{flex: 1}}></MapView>
+        <MapView
+          // provider={PROVIDER_GOOGLE}
+          initialRegion={region}
+          style={{flex: 1}}>
+          {destinationMarker()}
+        </MapView>
       </View>
     );
   }
