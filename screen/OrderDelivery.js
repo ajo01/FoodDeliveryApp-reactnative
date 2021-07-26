@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, SafeAreaView, Image, TouchableOpacity} from 'react-native';
 import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
 import {COLORS, FONTS, icons, SIZES, GOOGLE_API_KEY} from '../constants';
+import MapViewDirections from 'react-native-maps-directions';
 
 const OrderDelivery = ({route, navigation}) => {
   const [restaurant, setRestaurant] = React.useState(null);
@@ -10,10 +11,10 @@ const OrderDelivery = ({route, navigation}) => {
   const [toLocation, setToLocation] = React.useState(null);
   const [region, setRegion] = React.useState(null);
 
+  const [duration, setDuration] = React.useState(0);
+
   React.useEffect(() => {
     let {restaurant, currentLocation} = route.params;
-
-    console.log(restaurant);
 
     let fromLoc = currentLocation.gps;
     let toLoc = restaurant.location;
@@ -85,6 +86,14 @@ const OrderDelivery = ({route, navigation}) => {
           // provider={PROVIDER_GOOGLE}
           initialRegion={region}
           style={{flex: 1}}>
+          {/* <MapViewDirections
+            origin={fromLocation}
+            destination={toLocation}
+            apikey={GOOGLE_API_KEY}
+            strokeWidth={5}
+            strokeColor={COLORS.primary}
+            optimizeWaypoints={true}
+          /> */}
           {destinationMarker()}
           {carIcon()}
         </MapView>
@@ -92,7 +101,53 @@ const OrderDelivery = ({route, navigation}) => {
     );
   }
 
-  return <SafeAreaView style={{flex: 1}}>{renderMap()}</SafeAreaView>;
+  function renderDestinationHeader() {
+    return (
+      <View
+        style={{
+          position: 'absolute',
+          top: 50,
+          left: 0,
+          right: 0,
+          height: 50,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            width: SIZES.width * 0.9,
+            paddingVertical: SIZES.padding,
+            paddingHorizontal: SIZES.padding * 2,
+            borderRadius: SIZES.radius,
+            backgroundColor: COLORS.white,
+          }}>
+          <Image
+            source={icons.red_pin}
+            style={{
+              width: 30,
+              height: 30,
+              marginRight: SIZES.padding,
+            }}
+          />
+
+          <View style={{flex: 1}}>
+            <Text style={{...FONTS.body3}}>{streetName}</Text>
+          </View>
+
+          <Text style={{...FONTS.body3}}>{Math.ceil(duration)} mins</Text>
+        </View>
+      </View>
+    );
+  }
+
+  return (
+    <SafeAreaView style={{flex: 1}}>
+      {renderMap()}
+      {renderDestinationHeader()}
+    </SafeAreaView>
+  );
 };
 
 export default OrderDelivery;
